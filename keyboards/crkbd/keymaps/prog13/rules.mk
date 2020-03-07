@@ -1,5 +1,5 @@
 BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration
-MOUSEKEY_ENABLE = no        # Mouse keys
+MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = no        # Audio control and System control
 CONSOLE_ENABLE = no         # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
@@ -11,14 +11,14 @@ UNICODE_ENABLE = no         # Unicode
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight
 SWAP_HANDS_ENABLE = no      # Enable one-hand typing
-TAP_DANCE_ENABLE = yes
+TAP_DANCE_ENABLE = no
 RGB_MATRIX_ENABLE = WS2812
 
 # Do not enable SLEEP_LED_ENABLE. It uses the same timer as BACKLIGHT_ENABLE.
 SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 
 BOOTLOADER = qmk-dfu
-EXTRAFLAGS += -flto
+LTO_ENABLE = yes
 
 SRC +=  ./glcdfont.c \
         ./lib/layer_state_reader.c \

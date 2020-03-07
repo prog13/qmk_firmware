@@ -6,8 +6,6 @@
 
 #define USE_SERIAL_PD2
 
-#define TAPPING_TERM 165
-
 #ifdef RGBLIGHT_ENABLE
   #undef RGBLED_NUM
   #define RGBLED_NUM 27
@@ -15,7 +13,7 @@
   #define RGBLIGHT_HUE_STEP 10
   #define RGBLIGHT_SAT_STEP 17
   #define RGBLIGHT_VAL_STEP 12
-  #define RGBLIGHT_SLEEP
+  // #define RGBLIGHT_SLEEP
   #define RGBLIGHT_SPLIT
   // #define RGBLIGHT_ANIMATIONS
   // #define RGBLIGHT_EFFECT_ALTERNATING
