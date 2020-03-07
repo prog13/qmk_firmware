@@ -17,30 +17,21 @@ extern rgblight_config_t rgblight_config;
 
 extern uint8_t is_master;
 
-// Each layer gets a name for readability, which is then used in the keymap matrix below.
-// The underscores don't mean anything - you can have a layer called STUFF or any other name.
-// Layer names don't all need to be of the same length, obviously, and you can also skip them
-// entirely and just use numbers.
-#define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _ADJUST 3
+enum layer_names {
+  _QWERTY,
+  _SYMB,
+  _NUMB,
+  _ADJUST
+};
 
 enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
-  LOWER,
-  RAISE,
-  ADJUST,
-  BACKLIT,
-  RGBRST
+  QWERTY = SAFE_RANGE
 };
 
 #define KC______ KC_TRNS
 #define KC_XXXXX KC_NO
-#define KC_LOWER LOWER
-#define KC_RAISE RAISE
-#define KC_RST   RESET
-#define KC_LRST  RGBRST
+#define KC_NUMB  LT(_NUMB, KC_ENT)
+#define KC_SYMB  LT(_SYMB, KC_SPC)
 #define KC_LTOG  RGB_TOG
 #define KC_LHUI  RGB_HUI
 #define KC_LHUD  RGB_HUD
@@ -50,55 +41,53 @@ enum custom_keycodes {
 #define KC_LVAD  RGB_VAD
 #define KC_LMOD  RGB_MOD
 #define KC_CTLE  CTL_T(KC_ESC)
-#define KC_GUIL2 GUI_T(KC_LANG2)
-#define KC_ALTL1 RALT_T(KC_LANG1)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_kc( \
   //┌──────┬──────┬──────┬──────┬──────┬──────┐                ┌──────┬──────┬──────┬──────┬──────┬──────┐
-       TAB,     Q,     W,     E,     R,     T,                      Y,     U,     I,     O,     P,  BSPC,\
+       TAB,     Q,     W,     E,     R,     T,                      Y,     U,     I,     O,     P, XXXXX,\
   //├──────┼──────┼──────┼──────┼──────┼──────┤                ├──────┼──────┼──────┼──────┼──────┼──────┤
       CTLE,     A,     S,     D,     F,     G,                      H,     J,     K,     L,  SCLN,  QUOT,\
   //├──────┼──────┼──────┼──────┼──────┼──────┤                ├──────┼──────┼──────┼──────┼──────┼──────┤
-      LSFT,     Z,     X,     C,     V,     B,                      N,     M,  COMM,   DOT,  SLPI,  RSFT,\
+      LSFT,     Z,     X,     C,     V,     B,                      N,     M,  COMM,   DOT,  SLSH,  RSFT,\
   //└──────┴──────┴──────┴──────┼──────┼──────┼──────┐  ┌──────┼──────┼──────┼──────┴──────┴──────┴──────┘
-                                 GUIL2, LOWER,   SPC,      ENT, RAISE, ALTL1 \
+                                  RALT,  LGUI,  SYMB,     NUMB,  BSPC,   TAB \
                               //└──────┴──────┴──────┘  └──────┴──────┴──────┘
   ),
 
-  [_LOWER] = LAYOUT_kc( \
+  [_NUMB] = LAYOUT_kc( \
   //┌──────┬──────┬──────┬──────┬──────┬──────┐                ┌──────┬──────┬──────┬──────┬──────┬──────┐
-       TAB,     1,     2,     3,     4,     5,                      6,     7,     8,     9,     0,  BSPC,\
+     _____,     1,     2,     3,     4,     5,                      6,     7,     8,     9,     0, _____,\
   //├──────┼──────┼──────┼──────┼──────┼──────┤                ├──────┼──────┼──────┼──────┼──────┼──────┤
-      CTLE, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,                   LEFT,  DOWN,    UP, RIGHT, XXXXX, XXXXX,\
+     _____,   F1,    F2,    F3,    F4,    F5,                    LEFT,  DOWN,    UP, RIGHT, XXXXX, XXXXX,\
   //├──────┼──────┼──────┼──────┼──────┼──────┤                ├──────┼──────┼──────┼──────┼──────┼──────┤
-      LSFT, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  RSFT,\
+     _____,   F6,    F7,    F8,    F9,   F10,                    MS_L,  MS_D,  MS_U,  MS_R, XXXXX, _____,\
   //└──────┴──────┴──────┴──────┼──────┼──────┼──────┐  ┌──────┼──────┼──────┼──────┴──────┴──────┴──────┘
-                                 GUIL2, LOWER,   SPC,      ENT, RAISE, ALTL1 \
+                                  RALT,  LGUI,  SYMB,     NUMB,  BSPC,   TAB \
                               //└──────┴──────┴──────┘  └──────┴──────┴──────┘
   ),
 
-  [_RAISE] = LAYOUT_kc( \
+  [_SYMB] = LAYOUT_kc( \
   //┌──────┬──────┬──────┬──────┬──────┬──────┐                ┌──────┬──────┬──────┬──────┬──────┬──────┐
-       TAB,  EXLM,    AT,  HASH,   DLR,  PERC,                   CIRC,  AMPR,  ASTR,  LPRN,  RPRN,  BSPC,\
+     _____,  EXLM,    AT,  LCBR,  RCBR,  PIPE,                    GRV,  TILD,  BSLS, XXXXX, XXXXX, _____,\
   //├──────┼──────┼──────┼──────┼──────┼──────┤                ├──────┼──────┼──────┼──────┼──────┼──────┤
-      CTLE, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,                   MINS,   EQL, XXXXX,  LCBR,  RCBR,   GRV,\
+     _____,  HASH,   DLR,  LPRN,  RPRN,  BTN2,                   PLUS,  MINS,  SLSH,  ASTR, XXXXX, XXXXX,\
   //├──────┼──────┼──────┼──────┼──────┼──────┤                ├──────┼──────┼──────┼──────┼──────┼──────┤
-      LSFT, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,                   UNDS,  PLUS, XXXXX,  LBRC,  RBRC,  TILD,\
+     _____,  PERC,  CIRC,  LBRC,  RBRC,  BTN1,                   AMPR,   EQL, _____, _____, XXXXX, _____,\
   //└──────┴──────┴──────┴──────┼──────┼──────┼──────┐  ┌──────┼──────┼──────┼──────┴──────┴──────┴──────┘
-                                 GUIL2, LOWER,   SPC,      ENT, RAISE, ALTL1 \
+                                  RALT,  LGUI,  SYMB,     NUMB,  BSPC,   TAB \
                               //└──────┴──────┴──────┘  └──────┴──────┴──────┘
   ),
 
   [_ADJUST] = LAYOUT_kc( \
   //┌──────┬──────┬──────┬──────┬──────┬──────┐                ┌──────┬──────┬──────┬──────┬──────┬──────┐
-     XXXXX,  LRST, XXXXX, XXXXX, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
+     XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
   //├──────┼──────┼──────┼──────┼──────┼──────┤                ├──────┼──────┼──────┼──────┼──────┼──────┤
       LTOG,  LHUI,  LSAI,  LVAI, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
   //├──────┼──────┼──────┼──────┼──────┼──────┤                ├──────┼──────┼──────┼──────┼──────┼──────┤
       LMOD,  LHUD,  LSAD,  LVAD, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
   //└──────┴──────┴──────┴──────┼──────┼──────┼──────┐  ┌──────┼──────┼──────┼──────┴──────┴──────┴──────┘
-                                 GUIL2, LOWER,   SPC,      ENT, RAISE, ALTL1 \
+                                  RALT,  LGUI,  SYMB,     NUMB,  BSPC,   TAB \
                               //└──────┴──────┴──────┘  └──────┴──────┴──────┘
   )
 };
@@ -177,6 +166,10 @@ void iota_gfx_task_user(void) {
 }
 #endif//SSD1306OLED
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+  return update_tri_layer_state(state, _SYMB, _NUMB, _ADJUST);
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
 #ifdef SSD1306OLED
@@ -192,34 +185,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case LOWER:
-      if (record->event.pressed) {
-        layer_on(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
-      break;
-    case RAISE:
-      if (record->event.pressed) {
-        layer_on(_RAISE);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_RAISE);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
-      break;
-    case ADJUST:
-        if (record->event.pressed) {
-          layer_on(_ADJUST);
-        } else {
-          layer_off(_ADJUST);
-        }
-        return false;
-        break;
   }
   return true;
 }

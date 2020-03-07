@@ -6,8 +6,6 @@
 
 #define USE_SERIAL_PD2
 
-#define TAPPING_TERM 165
-
 #ifdef RGBLIGHT_ENABLE
   #undef RGBLED_NUM
   #define RGBLED_NUM 27
