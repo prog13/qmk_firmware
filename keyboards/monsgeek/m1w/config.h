@@ -20,7 +20,7 @@
 #define UART_RX_PIN A10
 
 /* Encoder */
-#define ENCODER_MAP_KEY_DELAY 1
+#define ENCODER_MAP_KEY_DELAY 10
 
 /* SPI */
 #define SPI_DRIVER SPIDQ
