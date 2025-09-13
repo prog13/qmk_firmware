@@ -18,6 +18,8 @@
 /* UART */
 #define UART_TX_PIN A9
 #define UART_RX_PIN A10
+#define UART_TX_PAL_MODE 7
+#define UART_RX_PAL_MODE 7
 
 /* Encoder */
 #define ENCODER_MAP_KEY_DELAY 8
