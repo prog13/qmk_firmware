@@ -1,4 +1,4 @@
-WIRELESS_ENABLE ?= yes
+WIRELESS_ENABLE ?= no
 WIRELESS_DIR = $(TOP_DIR)/keyboards/monsgeek/wireless
 
 ifeq ($(strip $(WIRELESS_ENABLE)), yes)
