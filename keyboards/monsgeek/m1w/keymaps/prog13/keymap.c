@@ -19,18 +19,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_FN] = LAYOUT(
-        QK_BOOT, _______, _______, _______, _______, _______, KC_MPLY, KC_MPRV, KC_MNXT, _______, _______, _______, _______, _______,          RGB_TOG,
-        EE_CLR,  QK_RBT,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _______, _______, KC_BT1,  KC_BT2,  KC_BT3,  KC_2G4,  KC_USB,  _______, KC_UP,   _______, _______, _______, RGB_MOD,          _______,
+        QK_BOOT, _______, _______, _______, _______, _______, KC_MPLY, KC_MPRV, KC_MNXT, _______, _______, _______, _______, _______,          RM_TOGG,
+        EE_CLR,  QK_RBT,  _______, _______, _______, _______, _______, _______, _______, _______, _______, RM_SPDD, RM_SPDU, _______,          _______,
+        _______, _______, _______, KC_BT1,  KC_BT2,  KC_BT3,  KC_2G4,  KC_USB,  _______, KC_UP,   _______, _______, _______, RM_NEXT,          _______,
         _______, _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______,          _______,          _______,
-        _______,          _______, _______, _______, _______, KC_BATQ, _______, _______, _______, _______, _______,          _______, RGB_SAI, _______,
-        _______, _______, _______,                            KC_BSPC,                            AG_TOGG, _______, _______, RGB_HUD, RGB_SAD, RGB_HUI
+        _______,          _______, _______, _______, _______, KC_BATQ, _______, _______, _______, _______, _______,          _______, RM_SATU, _______,
+        _______, _______, _______,                            KC_BSPC,                            AG_TOGG, _______, _______, RM_HUED, RM_SATD, RM_HUEU
     )
 };
 
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [_BASE] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-    [_FN] = {ENCODER_CCW_CW(RGB_VAD, RGB_VAI)}
+    [_FN] = {ENCODER_CCW_CW(RM_VALD, RM_VALU)}
 };
 #endif
