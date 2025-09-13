@@ -31,6 +31,11 @@
         "encoder": true,
         "dip_switch": true
     },
+    "host": {
+        "default": {
+            "nkro": true
+        }
+    } ,
     "keycodes": [
         { "key": "KC_USB" },
         { "key": "KC_BT1" },
@@ -201,7 +206,6 @@
     "url": "https://github.com/MonsGeek/qmk_firmware/tree/wireless/keyboards/monsgeek/m1w",
     "usb": {
         "device_version": "1.0.0",
-        "force_nkro": true,
         "pid": "0x3670",
         "suspend_wakeup_delay": 1000,
         "vid": "0x3555"
