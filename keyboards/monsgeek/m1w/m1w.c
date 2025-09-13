@@ -1,7 +1,12 @@
 // Copyright 2024 (@priyadie)
+// Copyright 2024 Su (@isuua)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
+
+#ifdef WIRELESS_ENABLE
+#include "wireless.h"
+#endif
 
 #ifdef RGB_MATRIX_ENABLE
 
@@ -133,15 +138,6 @@ const aw20216s_led_t g_aw20216s_leds[RGB_MATRIX_LED_COUNT] = {
 };
 
 #endif  // #ifdef RGB_MATRIX_ENABLE
-
-// Copyright 2024 Su (@isuua)
-// SPDX-License-Identifier: GPL-2.0-or-later
-
-#include QMK_KEYBOARD_H
-
-#ifdef WIRELESS_ENABLE
-#    include "wireless.h"
-#endif
 
 typedef union {
     uint32_t raw;
