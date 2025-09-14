@@ -3,7 +3,7 @@
     "keyboard_name": "M1W V3 VIA",
     "maintainer": "Priyadie",
     "bootloader": "wb32-dfu",
-    "debounce": 5,
+    "debounce": 4,
     "diode_direction": "ROW2COL",
     "eeprom": {
         "driver": "wear_leveling",
@@ -19,9 +19,6 @@
     },
     "features": {
         "bootmagic": true,
-        "combo": false,
-        "command": false,
-        "console": false,
         "extrakey": true,
         "mousekey": true,
         "nkro": true,
